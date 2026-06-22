@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextPath Careers — We Do Your Job Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; font-size: 16px; line-height: 1.7; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; border-bottom: 1px solid #e8ecf0; background: #fff; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 18px; font-weight: 600; color: #185FA5; letter-spacing: -0.3px; }
+  .logo span { color: #1a1a1a; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 14px; color: #555; }
+  .nav-links a:hover { color: #185FA5; }
+  .nav-cta { background: #185FA5; color: #fff !important; padding: 9px 22px; border-radius: 8px; font-weight: 500; }
+  .nav-cta:hover { background: #0C447C !important; color: #fff !important; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #042C53 0%, #185FA5 100%); padding: 80px 48px 88px; text-align: center; }
+  .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; font-size: 12px; padding: 5px 16px; border-radius: 20px; margin-bottom: 22px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .hero h1 { font-size: 44px; font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 18px; }
+  .hero h1 em { color: #85B7EB; font-style: normal; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 540px; margin: 0 auto 36px; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-white { background: #fff; color: #185FA5; border: none; padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-white:hover { background: #E6F1FB; }
+  .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.45); padding: 13px 30px; border-radius: 8px; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.8); }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #fff; border-bottom: 1px solid #e8ecf0; }
+  .stat { padding: 32px 20px; text-align: center; border-right: 1px solid #e8ecf0; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 30px; font-weight: 600; color: #185FA5; }
+  .stat-label { font-size: 13px; color: #777; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 68px 48px; }
+  section.alt { background: #f7f9fc; }
+  .section-tag { font-size: 12px; color: #185FA5; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-h2 { font-size: 30px; font-weight: 600; margin-bottom: 14px; line-height: 1.3; color: #0d1b2a; }
+  .section-sub { font-size: 15px; color: #666; max-width: 540px; line-height: 1.75; margin-bottom: 40px; }
+  .section-center { text-align: center; }
+  .section-center .section-sub { margin: 0 auto 40px; }
+
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .step { background: #fff; border: 1px solid #e8ecf0; border-radius: 12px; padding: 26px 22px; }
+  .step-num { width: 34px; height: 34px; background: #E6F1FB; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #185FA5; margin-bottom: 16px; }
+  .step h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #0d1b2a; }
+  .step p { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* PORTALS */
+  .portals { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .portal-pill { display: flex; align-items: center; gap: 7px; background: #fff; border: 1px solid #dce4ee; border-radius: 24px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: #1a1a1a; }
+  .portal-pill i { color: #185FA5; font-size: 15px; }
+  .avoid-note { font-size: 13px; color: #777; margin-top: 16px; display: flex; align-items: center; gap: 6px; }
+  .avoid-note i { color: #A32D2D; }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .price-card { background: #fff; border: 1px solid #dce4ee; border-radius: 14px; padding: 30px 26px; }
+  .price-card.featured { border: 2px solid #185FA5; }
+  .price-badge { display: inline-block; background: #E6F1FB; color: #0C447C; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 6px; margin-bottom: 18px; letter-spacing: 0.3px; }
+  .price-card h3 { font-size: 16px; font-weight: 600; color: #0d1b2a; margin-bottom: 8px; }
+  .price-amount { font-size: 30px; font-weight: 600; color: #185FA5; margin: 14px 0 4px; }
+  .price-amount span { font-size: 15px; color: #888; font-weight: 400; }
+  .price-note { font-size: 12px; color: #888; margin-bottom: 20px; line-height: 1.5; }
+  .price-list { list-style: none; }
+  .price-list li { font-size: 13px; color: #555; padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; border-top: 1px solid #f0f2f5; }
+  .price-list li:first-child { border-top: none; }
+  .price-list li i { color: #185FA5; font-size: 15px; margin-top: 2px; flex-shrink: 0; }
+  .pricing-footnote { text-align: center; font-size: 13px; color: #888; margin-top: 22px; }
+
+  /* FORM */
+  .form-wrap { max-width: 580px; margin: 0 auto; background: #fff; border: 1px solid #dce4ee; border-radius: 14px; padding: 40px 36px; }
+  .form-row { margin-bottom: 20px; }
+  .form-row label { font-size: 13px; font-weight: 500; color: #444; display: block; margin-bottom: 7px; }
+  .form-row input, .form-row select, .form-row textarea {
+    width: 100%; padding: 11px 14px; border-radius: 8px; border: 1px solid #dce4ee;
+    background: #f9fafc; font-size: 14px; color: #1a1a1a; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: #185FA5; background: #fff; }
+  .form-row textarea { resize: vertical; min-height: 90px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-submit { width: 100%; background: #185FA5; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+  .form-submit:hover { background: #0C447C; }
+
+  /* FOOTER */
+  footer { background: #042C53; color: rgba(255,255,255,0.6); text-align: center; padding: 36px 48px; font-size: 13px; line-height: 2; }
+  footer strong { color: #fff; font-size: 15px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 56px 24px 64px; }
+    .hero h1 { font-size: 30px; }
+    section { padding: 48px 24px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(3) { border-top: 1px solid #e8ecf0; }
+    .stat:nth-child(4) { border-top: 1px solid #e8ecf0; }
+    .form-row-2 { grid-template-columns: 1fr; }
+    .form-wrap { padding: 26px 20px; }
+    footer { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">NextPath<span> Careers</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#portals">Portals</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#apply" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Job Placement Services</div>
+  <h1>We apply. Employers call.<br><em>You show up &amp; get hired.</em></h1>
+  <p>We handle your entire job search — from profile optimization to genuine applications on verified portals — until you land the right offer.</p>
+  <div class="hero-btns">
+    <a href="#apply" class="btn-white">Get Started</a>
+    <a href="#how" class="btn-ghost">See how it works</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Placements per month</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">140–180</div>
+    <div class="stat-label">Applications / month</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Verified job portals</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2 mo</div>
+    <div class="stat-label">Average placement time</div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-h2">Your job search, handled end to end</h2>
+  <p class="section-sub">We partner with you from day one — no shortcuts, no fake applications, only genuine opportunities from high-converting portals.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Profile setup</h3>
+      <p>We optimize your resume, LinkedIn, and job profiles for maximum recruiter visibility.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Active applying</h3>
+      <p>We submit 140–180 targeted applications per month across 6 genuine, high-response portals.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Interview alerts</h3>
+      <p>You get notified immediately. We help you prepare for every interview round.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Offer &amp; placement</h3>
+      <p>Placement is confirmed only upon your written offer acceptance. We celebrate with you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="portals">
+  <div class="section-tag">Where we apply</div>
+  <h2 class="section-h2">Only genuine, high-interview portals</h2>
+  <p class="section-sub">We skip low-conversion platforms like Dice, CareerJet, and Simplify. Every application goes through portals with real hiring activity and strong interview ratios.</p>
+  <div class="portals">
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> LinkedIn</div>
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> Indeed</div>
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> Glassdoor</div>
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> SimplyHired</div>
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> Jobright</div>
+    <div class="portal-pill"><i class="ti ti-circle-check"></i> HiringCafe</div>
+  </div>
+  <p class="avoid-note"><i class="ti ti-ban"></i> We do not apply through Dice, CareerJet, or Simplify — their interview conversion rates are too low to justify your time.</p>
+</section>
+
+<section id="pricing">
+  <div class="section-tag section-center" style="text-align:center">Pricing</div>
+  <h2 class="section-h2 section-center" style="text-align:center">Low fees. Pay more only when you succeed.</h2>
+  <p class="section-sub section-center">A low monthly fee covers active marketing. After placement, a small success fee reflects our commitment to your long-term career.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-badge">Starter</div>
+      <h3>100–140 applications / month</h3>
+      <div class="price-amount">$600–$800<span>/mo</span></div>
+      <div class="price-note">+ 10% of monthly salary × 12 months after placement</div>
+      <ul class="price-list">
+        <li><i class="ti ti-check"></i> Resume &amp; profile optimization</li>
+        <li><i class="ti ti-check"></i> 100–140 genuine applications/month</li>
+        <li><i class="ti ti-check"></i> Recruiter outreach</li>
+        <li><i class="ti ti-check"></i> Interview scheduling support</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most popular</div>
+      <h3>140–180 applications / month</h3>
+      <div class="price-amount">$800–$1000<span>/mo</span></div>
+      <div class="price-note">+ 10% of monthly salary × 12 months after placement</div>
+      <ul class="price-list">
+        <li><i class="ti ti-check"></i> Everything in Starter</li>
+        <li><i class="ti ti-check"></i> 140–180 applications/month</li>
+        <li><i class="ti ti-check"></i> Priority portal targeting</li>
+        <li><i class="ti ti-check"></i> Faster placement timeline</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-badge">Consultant</div>
+      <h3>Per consultant</h3>
+      <div class="price-amount">$230<span>/consultant</span></div>
+      <div class="price-note">Choose the number of consultants based on your staffing needs</div>
+      <ul class="price-list">
+        <li><i class="ti ti-check"></i> Flexible team scaling</li>
+        <li><i class="ti ti-check"></i> Dedicated applications per consultant</li>
+        <li><i class="ti ti-check"></i> Ideal for staffing &amp; bench teams</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pricing-footnote">Alternative: one-time 6% of annual CTC within 3 months of joining. &nbsp;•&nbsp; Payment within 2–3 days of service start. &nbsp;•&nbsp; Fees are non-refundable once services commence.</p>
+</section>
+
+<section class="alt section-center" id="apply">
+  <div class="section-tag">Get started</div>
+  <h2 class="section-h2">Apply to NextPath Careers</h2>
+  <p class="section-sub">Fill in your details and we'll reach out within 24 hours to kickstart your job search.</p>
+  <div class="form-wrap">
+    <div class="form-row-2 form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div>
+        <label>First name</label>
+        <input type="text" placeholder="First name" />
+      </div>
+      <div>
+        <label>Last name</label>
+        <input type="text" placeholder="Last name" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Email address</label>
+      <input type="email" placeholder="you@example.com" />
+    </div>
+    <div class="form-row">
+      <label>Phone number</label>
+      <input type="tel" placeholder="+1 (555) 000-0000" />
+    </div>
+    <div class="form-row">
+      <label>Job title / Role you're targeting</label>
+      <input type="text" placeholder="e.g. Software Engineer, Data Analyst" />
+    </div>
+    <div class="form-row-2 form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div>
+        <label>Years of experience</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Less than 1 year</option>
+          <option>1–3 years</option>
+          <option>3–5 years</option>
+          <option>5–10 years</option>
+          <option>10+ years</option>
+        </select>
+      </div>
+      <div>
+        <label>Preferred plan</label>
+        <select>
+          <option value="">Select a plan...</option>
+          <option>Starter – $600–$800/mo</option>
+          <option>Most Popular – $800–$1000/mo</option>
+          <option>Consultant – $230/consultant</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Anything else we should know?</label>
+      <textarea placeholder="Skills, location preference, work authorization, visa status, etc."></textarea>
+    </div>
+    <button class="form-submit" onclick="this.textContent='✓ Submitted! We\'ll be in touch within 24 hours.'; this.style.background='#0F6E56';">Submit application</button>
+  </div>
+</section>
+
+<footer>
+  <strong>NextPath Careers</strong><br />
+  Building careers, changing lives.<br />
+  © 2026 NextPath Careers. All rights reserved.
+</footer>
+
+</body>
+</html>
